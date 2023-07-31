@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <h1>新規論文投稿</h1>
+    <h1>投稿論文編集</h1>
+
     @if ($errors->any())
         <div class="error">
             <p>
@@ -23,17 +24,18 @@
             </ul>
         </div>
     @endif
-    <form action="/articles" method="post">
+    <form action="/articles/{{ $article->id }}" method="post">
         @csrf
+        @method('PATCH')
         <p>
             <label for="title">論文タイトル</label><br>
-            <input type="text" id="title" name="title" value="{{ old('title') }}">
+            <input type="text" id="title" name="title" value="{{ old('title',$article->title) }}">
         </p>
         <p>
             <label for="body">本文</label><br>
-            <textarea name="body" id="body" cols="30" rows="10">{{ old('body')}}</textarea>
+            <textarea name="body" id="body" cols="30" rows="10" >{{ old('bosy',$article->body) }}</textarea>
         </p>
-        <input type="submit" value="投稿">
+        <input type="submit" value="更新">
     </form>
 </body>
 
