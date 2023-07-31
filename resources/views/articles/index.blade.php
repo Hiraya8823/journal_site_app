@@ -11,5 +11,7 @@
     @foreach ($articles as $article )
         <p><a href="/articles/{{ $article->id }}">{{ $article->title }}</a></p>
     @endforeach
-</body>
+
+    <!-- 新規登録画面へジャンプする -->
+    <button onclick="location.href='/articles/create'">新規論文投稿</button>
 </html>
